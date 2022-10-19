@@ -1,0 +1,27 @@
+<div class="container">
+  <div class=pb-5>
+    <div class="card">
+     <div class="card-header">
+        Search Repositories
+      </div>
+      <div class="card-body">
+        <p class="card-text">Search github repositeries by name</p>
+        <div class='d-flex justify-content-center'>
+          <%= form_with url: repositories_path, method: :get, class: 'row' do |form| %>
+            <div class='col-auto'>
+              <%= form.text_field :keyword, class: 'form-control', placeholder: 'Keyword', value: params[:keyword] %>
+            </div>
+            <div class='col-auto'>
+              <%= form.submit "Search Repositories", class: "btn btn-primary mb-3" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% if params[:keyword] %>
+    <div id='repo_results'>
+      <%= render partial: 'list', locals: { results: @results } %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-body">
+    <% if results %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Url</th>
+            <th scope="col">Stars</th>
+            <th scope="col">Language</th>
+            <th scope="col">Private</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% results.each_with_index do |item, i| %>
+            <tr data-list-id=<%="item_list_#{i}"%>>
+              <td data-name-id=<%="item_name_#{i}"%>><%= item['name'] %></td>
+              <td><%= item['owner']['login'] %></td>
+              <td><%= link_to item['html_url'], target: :_blank %></td>
+              <td><%= item['stargazers_count'] %></td>
+              <td><%= item['language'] %></td>
+              <td><%= item['private'] %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div id='pages' class='d-flex justify-content-center'>
+        <%= paginate results %>
+      </div>
+    <% else %>
+      <div class='justify-content-center'>
+        <%= render partial: 'shared/flashes' %>
+        <br>
+        <span>No Results</span>
+      </div>
+    <% end %>
+  </div>
+</div>
