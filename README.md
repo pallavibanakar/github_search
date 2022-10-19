@@ -1,7 +1,6 @@
-# README
+# GitHub Search
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple web app to search github public repositories.
 
 Things you may want to cover:
 
